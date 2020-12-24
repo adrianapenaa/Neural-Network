@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[3]:
-
 
 #first step is to import all necessary packages
 import numpy as np
@@ -31,46 +26,19 @@ def load_dataset():
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[4]:
-
 
 #to load the dataset (cat/non-cat):
 train_set_x_orig, train_set_y, test_set_x_orig, test_set_y, classes = load_dataset()
 
-
-# In[5]:
-
-
 m_train = train_set_y.shape[1]
 m_test = test_set_y.shape[1]
 num_px = train_set_x_orig.shape[1]
-
-print ("Number of training examples: m_train = " + str(m_train))
-print ("Number of testing examples: m_test = " + str(m_test))
-print ("Height/Width of each image: num_px = " + str(num_px))
-print ("Each image is of size: (" + str(num_px) + ", " + str(num_px) + ", 3)")
-print ("train_set_x shape: " + str(train_set_x_orig.shape))
-print ("train_set_y shape: " + str(train_set_y.shape))
-print ("test_set_x shape: " + str(test_set_x_orig.shape))
-print ("test_set_y shape: " + str(test_set_y.shape))
-
-
-# In[6]:
 
 
 #for convinience, the images of shape are reshaped so that each column represents a flattened image
 #use of tranpose
 train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[0], -1).T
 test_set_x_flatten = test_set_x_orig.reshape(test_set_x_orig.shape[0], -1).T
-
-print ("train_set_x_flatten shape: " + str(train_set_x_flatten.shape))
-print ("train_set_y shape: " + str(train_set_y.shape))
-print ("test_set_x_flatten shape: " + str(test_set_x_flatten.shape))
-print ("test_set_y shape: " + str(test_set_y.shape))
-print ("sanity check after reshaping: " + str(train_set_x_flatten[0:5,0]))
-
-
-# In[7]:
 
 
 #to represent color images, RGB channels are specified for each pixel 
@@ -79,8 +47,6 @@ print ("sanity check after reshaping: " + str(train_set_x_flatten[0:5,0]))
 train_set_x = train_set_x_flatten/255.
 test_set_x = test_set_x_flatten/255.
 
-
-# In[8]:
 
 
 #helper functions
@@ -121,8 +87,6 @@ def propagate(w, b, X, Y):
     return grads, cost
 
 
-# In[10]:
-
 
 #optimization function
 def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost = False):
@@ -151,8 +115,6 @@ def optimize(w, b, X, Y, num_iterations, learning_rate, print_cost = False):
     return params, grads, costs
 
 
-# In[12]:
-
 
 # prediction function
 
@@ -176,7 +138,6 @@ def predict(w,b,X):
     return Y_prediction
 
 
-# In[14]:
 
 
 # final model that merges the previous functions 
@@ -209,13 +170,12 @@ def model(X_train, Y_train, X_test, Y_test, num_iterations = 2000, learning_rate
     return d
 
 
-# In[15]:
 
 
 d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = 2000, learning_rate = 0.005, print_cost = True)
 
 
-# In[ ]:
+
 
 
 
